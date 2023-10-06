@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add Post</title>
+    <link rel="stylesheet" type="text/css" href="addPost.css">
+</head>
+<body>
+
+    <div class ="post-container">
+        <form action="index.html" method="post" id="post-form" onsubmit="redirectHome()">
+            <h3>Post body</h3>
+            <textarea id="post-text" name="post-text" form="post-form"></textarea>
+            <h3 id="selectFile">Select file</h3>
+            <div class="buttons">
+                <input type="file" id="fileInput" name="fileInput">
+                <input type="submit" id="create-post" value="Create post">
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function redirectHome() {
+            window.location.href = "index.html"; //redirect after creating post
+            return false;
+        }
+    </script>
+
+</body>
+</html>

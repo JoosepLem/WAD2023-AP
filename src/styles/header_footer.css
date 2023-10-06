@@ -1,3 +1,21 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+    bottom: 70px;
+    font-family: 'Times New Roman', Times, serif, monospace;
+    background-color: #f2f2f2;
+}
+
 
 /*header*/
 header{
@@ -51,13 +69,15 @@ li a:hover{
 /*footer*/
 
 footer{
-
+    height: 75px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     color: white;
     width: 100%;
     display: flex;
     justify-content: center;
     background-color: #333333;
-    margin-top: 50px;
 }
 
 .footer-wrapper{

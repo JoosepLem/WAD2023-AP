@@ -5,16 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add Post</title>
     <link rel="stylesheet" type="text/css" href="src/styles/addPost.css">
+    <link rel="stylesheet" type="text/css" href="src/styles/header_footer.css">
 </head>
 <body>
     <header>
         <div class="header-wrapper">
             <ul class="menu">
                 <li>
-                    <a href="">Home</a>
-                </li>
-                <li>
-                    <a href="">addPost</a>
+                    <a href="/index.html">Home</a>
                 </li>
             </ul>
             <div class="img">
@@ -23,24 +21,20 @@
         </div>
     </header>
 
-    <div class ="post-container">
-        <form action="index.html" method="post" id="post-form" onsubmit="redirectHome()">
+    <div class="post-container">
+        <form method="" id="post-form" action="/index.html">
             <h3>Post body</h3>
             <textarea id="post-text" name="post-text" form="post-form"></textarea>
             <h3 id="selectFile">Select file</h3>
             <div class="buttons">
                 <input type="file" id="fileInput" name="fileInput">
+                <input type="hidden" name="redirect_url" value="index.html">
                 <input type="submit" id="create-post" value="Create post">
             </div>
         </form>
     </div>
 
-    <script>
-        function redirectHome() {
-            window.location.href = "index.html"; //redirect after creating post
-            return false;
-        }
-    </script>
+
 
     <footer>
         <div class="footer-wrapper">

@@ -18,7 +18,7 @@ header{
 }
 
 .header-wrapper{
-    width: 1250px;
+    width: 1602px;
     display: flex;
     justify-content: space-between;
     height: 70px;
@@ -45,6 +45,11 @@ li a:hover{
     list-style: none;
     display: flex;
     gap: 65px;
+    padding-left: 10px;
+}
+
+.img{
+    padding-right: 10px;
 }
 
 .menu li a{
@@ -147,5 +152,11 @@ span ~ ul li{
     .post-wrapper{
         max-width: 500px;
     }
+}
 
+@media only screen and (min-width: 1024px) and (max-width: 1920px)  {
+    .header-wrapper{
+        margin-left: 90px;
+        margin-right: 90px;
+    }
 }

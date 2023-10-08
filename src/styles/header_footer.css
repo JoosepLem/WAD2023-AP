@@ -1,0 +1,118 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+    bottom: 70px;
+    font-family: 'Times New Roman', Times, serif, monospace;
+    background-color: #f2f2f2;
+}
+
+
+/*header*/
+header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #333333;
+}
+
+.header-wrapper{
+    width: 1602px;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+
+}
+
+li > a{
+    transition: .5s;
+    padding: 4px;
+    border-radius: 5px;
+}
+
+li a:hover{
+    background-color: goldenrod;
+}
+
+#profile_icon{
+    min-width: 45px;
+    max-height: 55px;
+}
+
+.menu{
+    list-style: none;
+    display: flex;
+    gap: 65px;
+    padding-left: 10px;
+}
+
+.img{
+    padding-right: 10px;
+}
+
+.menu li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+}
+
+/*footer*/
+
+footer{
+    height: 75px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    color: white;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #333333;
+}
+
+.footer-wrapper{
+    width: 1250px;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+
+}
+
+.footer-list{
+    list-style: none;
+}
+
+span ~ ul li{
+    font-size: 18px;
+}
+
+
+@media screen and (max-width: 780px) {
+    .header-wrapper{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+
+    .footer-wrapper{
+        padding-right: 20px;
+        padding-left: 20px;
+    }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1920px)  {
+    .header-wrapper{
+        margin-left: 90px;
+        margin-right: 90px;
+    }
+}

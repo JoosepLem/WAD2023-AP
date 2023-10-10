@@ -9,6 +9,10 @@ div > p {
     max-height: 30px;
 }
 
+.author-img + p{
+    font-size: 16px;
+}
+
 .post{
     margin-top: 30px;
     display: flex;
@@ -31,9 +35,7 @@ div > p {
     max-height: 700px;
 }
 
-.creation-date{
-    font-size: 16px;
-}
+
 
 .likes{
     max-width: 20px;
@@ -46,7 +48,9 @@ div > p {
     align-items: center;
 }
 
+.post-data + img{
 
+}
 
 @media screen and (max-width: 780px) {
     .post{

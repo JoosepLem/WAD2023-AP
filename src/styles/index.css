@@ -48,9 +48,6 @@ div > p {
     align-items: center;
 }
 
-.post-data + img{
-
-}
 
 @media screen and (max-width: 780px) {
     .post{

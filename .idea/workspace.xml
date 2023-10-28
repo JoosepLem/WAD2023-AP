@@ -6,18 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1a2705a2-a8bf-4379-b98b-04cd7fd5b195" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/addPost.html" beforeDir="false" afterPath="$PROJECT_DIR$/addPost.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/like.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/like.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/post1.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/post1.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/post3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/post3.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/post4.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/post4.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/profile_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/images/profile_icon.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/addPost.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/addPost.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/header_footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/header_footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/posts.json" beforeDir="false" afterPath="$PROJECT_DIR$/static/posts.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +37,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -84,7 +75,7 @@
       <workItem from="1696968273681" duration="140000" />
       <workItem from="1696969639470" duration="7000" />
       <workItem from="1697627243864" duration="16000" />
-      <workItem from="1698489876591" duration="3393000" />
+      <workItem from="1698489876591" duration="5156000" />
     </task>
     <servers />
   </component>

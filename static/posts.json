@@ -1,0 +1,37 @@
+[
+  {
+    "profileImage": "static/images/profile_icon.png",
+    "created": "oct 22, 2022",
+    "postImage": "static/images/post1.jpeg",
+    "postContent": "Tartu, Estonia's second-largest city with a population of 97,435 as of 2023, is known for its historical significance. It sits on the Emajõgi river, linking Lake Võrtsjärv and Lake Peipus. Tartu is renowned as the \"intellectual capital\" due to its University of Tartu, established in 1632. It's also home to the Supreme Court, Ministry of Education and Research, Estonian National Museum, and Vanemuine, the oldest Estonian-language theatre. Tartu is set to become the European Capital of Culture in 2024.",
+    "likeIcon": "static/images/like.png"
+  },
+  {
+    "profileImage": "static/images/profile_icon.png",
+    "created": "oct 2, 2022",
+    "postImage": null,
+    "postContent": "This course will introduce students to key concepts and technologies for developing modern web applications. The course starts by presenting basic Web technologies and languages (e.g. HTTP, HTML, CSS, Javascript) followed by modern frontend (e.g., Vue.js) and backend development frameworks (e.g., Node.js). Finally, various software testing techniques will be discussed and we will learn how some of them can be used in the context of web applications.",
+    "likeIcon": "static/images/like.png"
+  },
+  {
+    "profileImage": "static/images/profile_icon.png",
+    "created": "aug 5, 2021",
+    "postImage": "static/images/post3.jpeg",
+    "postContent": "Tallinn, the capital and largest city of Estonia, is located on the north coast by the Gulf of Finland. As of 2023, it has a population of about 454,000. Tallinn serves as Estonia's primary financial, industrial, and cultural hub. It is situated 187 km northwest of Tartu, 80 km south of Helsinki, Finland, 320 km west of Saint Petersburg, Russia, 300 km north of Riga, Latvia, and 380 km east of Stockholm, Sweden. Historically, it was known as Reval in much of the world until the early 20th century.",
+    "likeIcon": "static/images/like.png"
+  },
+  {
+    "profileImage": "static/images/profile_icon.png",
+    "created": "sep 12, 2021",
+    "postImage": "static/images/post4.jpeg",
+    "postContent": "The University of Tartu Delta Centre brings together a vibrant community of students, researchers and innovators in the fields of computer science, robotics, technology, mathematics, statistics, economics, management and business. The Delta Centre combines learning, excellence in research and the challenges of business and society, creating innovative solutions for economic and social progress.",
+    "likeIcon": "static/images/like.png"
+  },
+  {
+    "profileImage": "static/images/profile_icon.png",
+    "created": "oct 27, 2022",
+    "postImage": null,
+    "postContent": "JavaScript is a scripting or programming language that allows you to implement complex features on web pages — every time a web page does more than just sit there and display static information for you to look at — displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. — you can bet that JavaScript is probably involved. It is the third layer of the layer cake of standard web technologies, two of which (HTML and CSS) we have covered in much more detail in other parts of the Learning Area.",
+    "likeIcon": "static/images/like.png"
+  }
+]

@@ -1,6 +1,6 @@
 .post-container{
     width: 500px;
-    height: 600px;
+    height: 70vh;
     padding: 20px;
     background-color: #fff;
     border: 1px solid #ccc;
@@ -84,8 +84,8 @@ input + input{
 @media screen and (max-width: 600px){
 
     .post-container{
-        width: 75%;
-        height: 70%;
+        width: 75vw;
+        height: 70vh;
     }
 
     .buttons{

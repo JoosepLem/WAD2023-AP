@@ -31,7 +31,7 @@ header{
     justify-content: space-between;
     height: 70px;
     align-items: center;
-
+    position: relative;
 }
 
 li > a{
@@ -65,6 +65,29 @@ li a:hover{
     color: white;
     font-size: 20px;
 }
+
+#dropDownMenu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    display: none;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 1;
+    border-radius: 10px;
+}
+
+#dropDownMenu ul {
+    list-style: none;
+}
+
+#dropDownMenu ul li {
+    margin-bottom: 2px;
+    display: flex;
+    justify-content: center;
+}
+
 
 /*footer*/
 

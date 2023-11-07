@@ -1,6 +1,7 @@
 window.onload = function() {
 
-    fetch('https://json.extendsclass.com/bin/a5df0d29a8f2') //https://json.extendsclass.com/bin/a5df0d29a8f2
+    // fetch('https://json.extendsclass.com/bin/a5df0d29a8f2')
+    fetch('static/posts.json')
         .then((response) => response.json())
         .then(json => {
             console.log(json);

@@ -1,0 +1,172 @@
+<template>
+    <header>
+        <div class="header-wrapper">
+            <ul class="menu">
+                <li> <a href="@/views/HomeView.vue">Main</a> </li>
+                <li> <a href="@/views/SignUpView.vue">Signup</a> </li>
+            </ul>
+            <div class="img">
+                <img id="profile_icon" ref="profileIcon" src="@/assets/profile_icon.png" alt="profile icon" @click="toggleDropdown" />
+             </div>
+            <div id="dropDownMenu" v-show="isDropdownVisible" ref="dropDownMenu">
+                <ul>
+                    <li>Heli Kopter</li>
+                    <li>helikopter@gmail.com</li>
+                    <li>Logout</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+</template>
+  
+<script>
+    export default {
+        data() {
+            return {
+                isDropdownVisible: false,
+            };
+        },
+
+        methods: {
+            toggleDropdown() {
+                this.isDropdownVisible = !this.isDropdownVisible;
+
+                /*if (this.isDropdownVisible) {
+                    document.addEventListener("click", this.closeDropdownOnClickOutside);
+                } else {
+                    document.removeEventListener("click", this.closeDropdownOnClickOutside);
+                }
+                */
+            },
+
+            /*closeDropdownOnClickOutside(event) {
+                if (
+                    this.isDropdownVisible &&
+                    this.$refs.dropDownMenu.contains(event.target) &&
+                    !this.$refs.profileIcon.contains(event.target)
+                ) {
+                    this.isDropdownVisible = false;
+                    document.removeEventListener("click", this.closeDropdownOnClickOutside);
+                }
+            },
+            */
+        },
+
+        /*beforeDestroy() {
+            document.removeEventListener("click", this.closeDropdownOnClickOutside);
+        },
+        */
+    };
+</script>
+  
+  <style scoped>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html{
+        position: relative;
+        min-height: 100%;
+    }
+
+    body {
+        margin: 0 0 100px;
+        bottom: 70px;
+        font-family: 'Times New Roman', Times, serif, monospace;
+        background-color: #f2f2f2;
+    }
+
+    header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #333333;
+    }
+
+    .header-wrapper{
+        width: 1602px;
+        display: flex;
+        justify-content: space-between;
+        height: 70px;
+        align-items: center;
+        position: relative;
+    }
+
+    li > a{
+        transition: .5s;
+        padding: 4px;
+        border-radius: 5px;
+    }
+
+    li a:hover{
+        background-color: goldenrod;
+    }
+
+    #profile_icon{
+        min-width: 45px;
+        max-height: 55px;
+    }
+
+    .menu{
+        list-style: none;
+        display: flex;
+        gap: 20px;
+        padding-left: 10px;
+    }
+
+    .img{
+        padding-right: 10px;
+    }
+
+    .menu li a{
+        text-decoration: none;
+        color: white;
+        font-size: 24px;
+    }
+
+    #dropDownMenu {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ccc;
+        z-index: 1;
+        border-radius: 10px;
+    }
+  
+    #dropDownMenu ul {
+        list-style: none;
+    }
+    
+    #dropDownMenu ul li {
+        margin-bottom: 2px;
+        display: flex;
+        justify-content: center;
+    }
+
+    @media screen and (max-width: 780px) {
+        .header-wrapper{
+            padding-right: 20px;
+            padding-left: 20px;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) and (max-width: 1920px)  {
+        .header-wrapper{
+            margin-left: 90px;
+            margin-right: 90px;
+        }
+        #dropDownMenu{
+            right: -40px;
+        }
+    }
+
+    @media only screen and (min-width: 1920px) {
+        #dropDownMenu{
+            right: -40px;
+        }
+    }
+  </style>

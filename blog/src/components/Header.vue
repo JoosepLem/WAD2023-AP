@@ -6,7 +6,7 @@
                 <li> <a href="@/views/SignUpView.vue">Signup</a> </li>
             </ul>
             <div class="img">
-                <img id="profile_icon" ref="profileIcon" src="@/assets/profile_icon.png" alt="profile icon" @click="toggleDropdown" />
+                <img id="profileIcon" ref="profileIcon" src="@/assets/profileIcon.png" alt="profile icon" @click="toggleDropdown" />
              </div>
             <div id="dropDownMenu" v-show="isDropdownVisible" ref="dropDownMenu">
                 <ul>
@@ -24,38 +24,30 @@
         data() {
             return {
                 isDropdownVisible: false,
+                dropDownMenuId: 'dropDownMenu',
+                profileIconId: 'profileIcon',
             };
+        },
+        
+        mounted() {
+            document.addEventListener("click", this.closeDropdownOnClickOutside);
         },
 
         methods: {
             toggleDropdown() {
                 this.isDropdownVisible = !this.isDropdownVisible;
-
-                /*if (this.isDropdownVisible) {
-                    document.addEventListener("click", this.closeDropdownOnClickOutside);
-                } else {
-                    document.removeEventListener("click", this.closeDropdownOnClickOutside);
-                }
-                */
             },
 
-            /*closeDropdownOnClickOutside(event) {
+            closeDropdownOnClickOutside(event) {
                 if (
                     this.isDropdownVisible &&
-                    this.$refs.dropDownMenu.contains(event.target) &&
-                    !this.$refs.profileIcon.contains(event.target)
+                    !(document.getElementById(this.profileIconId).contains(event.target)) &&
+                    !(document.getElementById(this.dropDownMenuId).contains(event.target))
                 ) {
                     this.isDropdownVisible = false;
-                    document.removeEventListener("click", this.closeDropdownOnClickOutside);
                 }
             },
-            */
         },
-
-        /*beforeDestroy() {
-            document.removeEventListener("click", this.closeDropdownOnClickOutside);
-        },
-        */
     };
 </script>
   
@@ -104,7 +96,7 @@
         background-color: goldenrod;
     }
 
-    #profile_icon{
+    #profileIcon{
         min-width: 45px;
         max-height: 55px;
     }

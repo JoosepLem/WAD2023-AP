@@ -1,5 +1,5 @@
 <template>
-  <section class="post" v-for="post in getPosts">
+  <section class="post">
     <div class="post-wrapper">
       <div class="post-data">
         <img class="author-img" :src="post.profileImage" alt="">
@@ -12,27 +12,35 @@
         <p>{{ post.postContent }}</p>
       </div>
       <div class="likes">
-        <button class="add-like" @click="$store.dispatch('incrementLikesAct', getPosts.indexOf(post))">
+        <button class="add-like" @click="incrementLikes">
           <img class="likes-icon" :src="post.likeIcon" alt="">
         </button>
         <span>{{ post.likes }} likes</span>
       </div>
-
     </div>
   </section>
 </template>
 
 <script>
 export default {
-  computed: {
-    getPosts() {
-      return this.$store.getters.getPosts;
+  props: {
+    post: {
+      type: Object,
+      required: true,
+    },
+    index: {
+      type: Number,
+      required: true,
+    },
+  },
+
+  methods: {
+    incrementLikes() {
+      this.$store.dispatch('incrementLikesAct', this.index);
     },
   },
 }
 </script>
-
-
 
 
 

@@ -3,24 +3,42 @@
     <div class="login-container">
       <h2 id="head1"><strong>Welcome to PostIt</strong></h2>
       <div class="create-account">
-        <a href="">Create an account</a>
+        <router-link to="#">Create an account</router-link>
       </div>
       <h2>or<br>Log in</h2>
-      <form action="/index.html" method="">
-        <input type="text" id="username" name="username" placeholder="Email" required>
+      <form method="" @submit.prevent="handleSubmit">
+        <input type="email" id="username" name="username" placeholder="Email" required>
         <input type="password" id="password" name="password" placeholder="Password" required>
 
         <input type="submit" value="Login">
       </form>
       <div class="forgot-password">
-        <a href="">Forgot Password?</a>
+        <router-link to="#">Forgot Password?</router-link>
       </div>
     </div>
   </section>
 </template>
 
 
-<style>
+<script>
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
+export default {
+  components: {
+    Header,
+    Footer,
+  },
+  methods: {
+    handleSubmit() {
+      this.$router.push('/');
+    }
+  }
+}
+</script>
+
+
+<style scoped>
 body {
   font-family: 'Times New Roman', Times, serif, monospace;
   background-color: #f2f2f2;
@@ -69,7 +87,7 @@ label {
   margin-bottom: 5px;
 }
 
-input[type="text"],
+input[type="email"],
 input[type="password"] {
   width: 50%;
   margin: auto;

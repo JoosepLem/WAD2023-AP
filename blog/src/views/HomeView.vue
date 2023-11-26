@@ -1,29 +1,29 @@
 <template>
-  <Header />
-  <Post ></Post>
+  <div v-for="(post, index) in getPosts" :key="post.id">
+    <Post :post="post" :index="index"/>
+  </div>
   <div class="reset-likes">
     <button class="reset-likes-btn" @click="$store.dispatch('resetLikesAct')">Reset likes</button>
   </div>
-  <Footer />
 </template>
 
 <script>
-  import Post from "@/components/Post";
-  import Header from "@/components/Header";
-  import Footer from "@/components/Footer";
+import Post from "@/components/Post";
 
-  export default {
-    components: {
-      Post,
-      Header,
-      Footer,
-    },
 
-    data() {
-      return {};
+export default {
+  components: {
+    Post,
+  },
+
+  computed: {
+    getPosts() {
+      return this.$store.getters.getPosts;
     },
-  };
+  },
+};
 </script>
+
 
 <style>
 *{

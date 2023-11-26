@@ -2,19 +2,23 @@
     <header>
         <div class="header-wrapper">
             <ul class="menu">
-                <li> <a href="@/views/HomeView.vue">Main</a> </li>
-                <li> <a href="@/views/SignUpView.vue">Signup</a> </li>
+                <li>
+                  <router-link to="/">Home</router-link>
+                </li>
+                <li>
+                  <router-link to="/signup">Sign up</router-link>
+                </li>
             </ul>
-            <div class="img">
-                <img id="profileIcon" ref="profileIcon" src="@/assets/profileIcon.png" alt="profile icon" @click="toggleDropdown" />
-             </div>
-            <div id="dropDownMenu" v-show="isDropdownVisible" ref="dropDownMenu">
-                <ul>
-                    <li>Heli Kopter</li>
-                    <li>helikopter@gmail.com</li>
-                    <li>Logout</li>
-                </ul>
-            </div>
+<!--            <div class="img">-->
+<!--                <img id="profileIcon" ref="profileIcon" src="@/assets/profileIcon.png" alt="profile icon" @click="toggleDropdown" />-->
+<!--             </div>-->
+<!--            <div id="dropDownMenu" v-show="isDropdownVisible" ref="dropDownMenu">-->
+<!--                <ul>-->
+<!--                    <li>Heli Kopter</li>-->
+<!--                    <li>helikopter@gmail.com</li>-->
+<!--                    <li>Logout</li>-->
+<!--                </ul>-->
+<!--            </div>-->
         </div>
     </header>
 </template>
@@ -80,7 +84,8 @@
     .header-wrapper{
         width: 1602px;
         display: flex;
-        justify-content: space-between;
+        /*justify-content: space-between;*/
+        justify-content: center;
         height: 70px;
         align-items: center;
         position: relative;

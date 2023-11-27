@@ -52,7 +52,6 @@ export default {
     handleSubmit() {
       this.isPasswordValid = this.validatePassword(this.password);
 
-      // If email or password is not valid, prevent form submission
       if (!this.isPasswordValid) {
         return;
       }

@@ -6,9 +6,21 @@
         <router-link to="#">Create an account</router-link>
       </div>
       <h2>or<br>Log in</h2>
-      <form method="" @submit.prevent="handleSubmit">
-        <input type="email" id="username" name="username" placeholder="Email" required>
-        <input type="password" id="password" name="password" placeholder="Password" required>
+      <form @submit.prevent="handleSubmit">
+        <input v-model="username" type="email" id="username" name="username" placeholder="Email" required>
+        <input v-model="password" type="password" id="password" name="password" placeholder="Password" required>
+
+        <div v-if="!isPasswordValid" class="validation-error">
+          Password is not valid. Please follow these conditions:
+          <ul>
+            <li>At least 8 characters and less than 15 characters</li>
+            <li>Includes at least one uppercase alphabet character</li>
+            <li>Includes at least two lowercase alphabet characters</li>
+            <li>Includes at least one numeric value</li>
+            <li>Starts with an uppercase alphabet</li>
+            <li>Includes the character "_"</li>
+          </ul>
+        </div>
 
         <input type="submit" value="Login">
       </form>
@@ -19,7 +31,6 @@
   </section>
 </template>
 
-
 <script>
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -29,16 +40,65 @@ export default {
     Header,
     Footer,
   },
+  data() {
+    return {
+      username: "",
+      password: "",
+      isEmailValid: true,
+      isPasswordValid: true,
+    };
+  },
   methods: {
     handleSubmit() {
-      this.$router.push('/');
-    }
-  }
-}
+      this.isPasswordValid = this.validatePassword(this.password);
+
+      // If email or password is not valid, prevent form submission
+      if (!this.isPasswordValid) {
+        return;
+      }
+    },
+    validatePassword(password) {
+      // Check the length (at least 8 characters and less than 15 characters)
+      const isLengthValid = password.length >= 8 && password.length < 15;
+
+      // Check if it includes at least one uppercase alphabet character
+      const hasUppercase = /[A-Z]/.test(password);
+
+      // Check if it includes at least two lowercase alphabet characters
+      const hasTwoLowercase = /[a-z].*[a-z]/.test(password);
+
+      // Check if it includes at least one numeric value
+      const hasNumericValue = /\d/.test(password);
+
+      // Check if it starts with an uppercase alphabet
+      const startsWithUppercase = /^[A-Z]/.test(password);
+
+      // Check if it includes the character "_"
+      const hasUnderscore = /_/.test(password);
+
+      // Combine all conditions
+      const isValid =
+        isLengthValid &&
+        hasUppercase &&
+        hasTwoLowercase &&
+        hasNumericValue &&
+        startsWithUppercase &&
+        hasUnderscore;
+
+      return isValid;
+    },
+  },
+};
 </script>
 
 
 <style scoped>
+.validation-error {
+  color: red;
+  margin-top: 5px;
+  text-align: left;
+}
+
 body {
   font-family: 'Times New Roman', Times, serif, monospace;
   background-color: #f2f2f2;
@@ -135,7 +195,7 @@ input[type="submit"]:hover {
 }
 
 .create-account ~ * {
-  text-shadow: 1px 1px 1px gray;
+  text-shadow: 0.5px 0.5px 0.5px gray;
 }
 
 

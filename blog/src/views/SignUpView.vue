@@ -1,11 +1,11 @@
 <template>
   <section>
     <div class="login-container">
-<!--      <h2 id="head1"><strong>Welcome to PostIt</strong></h2>-->
-<!--      <div class="create-account">-->
-<!--        <router-link to="/">Create an account</router-link>-->
-<!--      </div>-->
-<!--      <h2>or<br>Log in</h2>-->
+      <!--      <h2 id="head1"><strong>Welcome to PostIt</strong></h2>-->
+      <!--      <div class="create-account">-->
+      <!--        <router-link to="/">Create an account</router-link>-->
+      <!--      </div>-->
+      <!--      <h2>or<br>Log in</h2>-->
       <form @submit.prevent="handleSubmit">
         <div class="input-group">
           <label for="username">Email:</label>
@@ -31,9 +31,9 @@
 
         <input type="submit" value="Signup">
       </form>
-<!--      <div class="forgot-password">-->
-<!--        <router-link to="/">Forgot Password?</router-link>-->
-<!--      </div>-->
+      <!--      <div class="forgot-password">-->
+      <!--        <router-link to="/">Forgot Password?</router-link>-->
+      <!--      </div>-->
     </div>
   </section>
 </template>

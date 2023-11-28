@@ -12,9 +12,11 @@
     </footer>
 </template>
 
+
+
 <style scoped>
     footer{
-        height: 75px;
+        height: 90px;
         position: absolute;
         left: 0;
         bottom: 0;
@@ -22,6 +24,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
+        align-items: center;
         background-color: #333333;
     }
 
@@ -48,6 +51,7 @@
         .footer-wrapper{
             padding-right: 20px;
             padding-left: 20px;
+
         }
     }
 </style>

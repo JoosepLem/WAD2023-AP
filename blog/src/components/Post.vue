@@ -100,7 +100,7 @@ div > p {
   border: 1px solid #333333;
   border-radius: 10px;
   width: 650px;
-  max-height: 800px;
+  max-height: 850px;
   display: flex;
   flex-direction: column;
   gap: 7px;

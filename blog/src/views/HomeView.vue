@@ -5,6 +5,7 @@
   <div class="reset-likes">
     <button class="reset-likes-btn" @click="$store.dispatch('resetLikesAct')">Reset likes</button>
   </div>
+
 </template>
 
 <script>

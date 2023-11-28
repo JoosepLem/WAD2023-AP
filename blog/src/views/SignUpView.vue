@@ -1,44 +1,93 @@
 <template>
   <section>
     <div class="login-container">
-      <h2 id="head1"><strong>Welcome to PostIt</strong></h2>
-      <div class="create-account">
-        <router-link to="#">Create an account</router-link>
-      </div>
-      <h2>or<br>Log in</h2>
-      <form method="" @submit.prevent="handleSubmit">
-        <input type="email" id="username" name="username" placeholder="Email" required>
-        <input type="password" id="password" name="password" placeholder="Password" required>
+<!--      <h2 id="head1"><strong>Welcome to PostIt</strong></h2>-->
+<!--      <div class="create-account">-->
+<!--        <router-link to="/">Create an account</router-link>-->
+<!--      </div>-->
+<!--      <h2>or<br>Log in</h2>-->
+      <form @submit.prevent="handleSubmit">
+        <div class="input-group">
+          <label for="username">Email:</label>
+          <input v-model="username" type="email" id="username" name="username" placeholder="Email" required>
+        </div>
+        <div class="input-group">
+          <label for="password">Password:</label>
+          <input v-model="password" type="password" id="password" name="password" placeholder="Password" required>
+        </div>
 
-        <input type="submit" value="Login">
+
+        <div v-if="!isPasswordValid" class="validation-error">
+          Password is not valid. Please follow these conditions:
+          <ul>
+            <li>At least 8 characters and less than 15 characters</li>
+            <li>Includes at least one uppercase alphabet character</li>
+            <li>Includes at least two lowercase alphabet characters</li>
+            <li>Includes at least one numeric value</li>
+            <li>Starts with an uppercase alphabet</li>
+            <li>Includes the character "_"</li>
+          </ul>
+        </div>
+
+        <input type="submit" value="Signup">
       </form>
-      <div class="forgot-password">
-        <router-link to="#">Forgot Password?</router-link>
-      </div>
+<!--      <div class="forgot-password">-->
+<!--        <router-link to="/">Forgot Password?</router-link>-->
+<!--      </div>-->
     </div>
   </section>
 </template>
 
-
 <script>
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 
 export default {
-  components: {
-    Header,
-    Footer,
+  data() {
+    return {
+      username: "",
+      password: "",
+      isEmailValid: true,
+      isPasswordValid: true,
+    };
   },
   methods: {
     handleSubmit() {
-      this.$router.push('/');
-    }
-  }
-}
+      this.isPasswordValid = this.validatePassword(this.password);
+
+      if (this.isPasswordValid) {
+        this.$router.push('/');
+      }
+    },
+    validatePassword(password) {
+      const isLengthValid = password.length >= 8 && password.length < 15;
+      const hasUppercase = /[A-Z]/.test(password);
+      const hasTwoLowercase = /[a-z].*[a-z]/.test(password);
+      const hasNumericValue = /\d/.test(password);
+      const startsWithUppercase = /^[A-Z]/.test(password);
+      const hasUnderscore = /_/.test(password);
+
+      const isValid =
+          isLengthValid &&
+          hasUppercase &&
+          hasTwoLowercase &&
+          hasNumericValue &&
+          startsWithUppercase &&
+          hasUnderscore;
+      return isValid;
+
+    },
+  },
+};
 </script>
 
 
 <style scoped>
+
+.validation-error {
+  color: red;
+  margin-top: 5px;
+  text-align: left;
+}
+
 body {
   font-family: 'Times New Roman', Times, serif, monospace;
   background-color: #f2f2f2;
@@ -71,6 +120,20 @@ section{
   letter-spacing: 2px;
 }
 
+.input-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+label {
+  width: 10%;
+  margin-right: 10px;
+  white-space: nowrap;
+}
+
+
 h2 {
   text-align: center;
   font-weight: normal;
@@ -96,6 +159,7 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 3px;
 }
+
 
 input[type="submit"] {
   width: 25%;
@@ -135,7 +199,7 @@ input[type="submit"]:hover {
 }
 
 .create-account ~ * {
-  text-shadow: 1px 1px 1px gray;
+  text-shadow: 0.5px 0.5px 0.5px gray;
 }
 
 
@@ -148,7 +212,17 @@ input[type="submit"]:hover {
     width: 90%;
   }
 
-  input[type="text"],
+  .input-group {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  label {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+
+  input[type="email"],
   input[type="password"] {
     width: 100%;
   }

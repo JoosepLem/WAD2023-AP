@@ -22,7 +22,8 @@
         </div>
     </header>
 </template>
-  
+
+
 <script>
     export default {
         data() {
@@ -54,7 +55,8 @@
         },
     };
 </script>
-  
+
+
   <style scoped>
     *{
         box-sizing: border-box;

@@ -6,31 +6,31 @@
       <!--        <router-link to="/">Create an account</router-link>-->
       <!--      </div>-->
       <!--      <h2>or<br>Log in</h2>-->
-      <form @submit.prevent="handleSubmit">
-        <div class="input-group">
-          <label for="username">Email:</label>
-          <input v-model="username" type="email" id="username" name="username" placeholder="Email" required>
-        </div>
-        <div class="input-group">
-          <label for="password">Password:</label>
-          <input v-model="password" type="password" id="password" name="password" placeholder="Password" required>
-        </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required v-model="email">
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required v-model="password">
+      </div>
 
 
-        <div v-if="!isPasswordValid" class="validation-error">
-          Password is not valid. Please follow these conditions:
-          <ul>
-            <li>At least 8 characters and less than 15 characters</li>
-            <li>Includes at least one uppercase alphabet character</li>
-            <li>Includes at least two lowercase alphabet characters</li>
-            <li>Includes at least one numeric value</li>
-            <li>Starts with an uppercase alphabet</li>
-            <li>Includes the character "_"</li>
-          </ul>
-        </div>
+<!--      <div v-if="!isPasswordValid" class="validation-error">-->
+<!--        Password is not valid. Please follow these conditions:-->
+<!--        <ul>-->
+<!--          <li>At least 8 characters and less than 15 characters</li>-->
+<!--          <li>Includes at least one uppercase alphabet character</li>-->
+<!--          <li>Includes at least two lowercase alphabet characters</li>-->
+<!--          <li>Includes at least one numeric value</li>-->
+<!--          <li>Starts with an uppercase alphabet</li>-->
+<!--          <li>Includes the character "_"</li>-->
+<!--        </ul>-->
+<!--      </div>-->
+      <div class="buttons">
+        <button class="signup" @click="SignUp">Sign up</button>
+      </div>
 
-        <input type="submit" value="Signup">
-      </form>
       <!--      <div class="forgot-password">-->
       <!--        <router-link to="/">Forgot Password?</router-link>-->
       <!--      </div>-->
@@ -43,38 +43,48 @@
 export default {
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
-      isEmailValid: true,
-      isPasswordValid: true,
+      // isEmailValid: true,
+      // isPasswordValid: true,
     };
   },
   methods: {
-    handleSubmit() {
-      this.isPasswordValid = this.validatePassword(this.password);
-
-      if (this.isPasswordValid) {
-        this.$router.push('/');
-      }
+    SignUp() {
+      var data1 = {email: this.email, password: this.password};
+      fetch("http://localhost:3000/auth/signup", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        credentials: 'include', // Don't forget to specify this if you need cookies
+        body: JSON.stringify(data1)
+      })
+          .then((response) => response.json())
+          .then(() => {
+            location.assign("/");
+          })
+          .catch((e) => {
+            console.log(e);
+          });
     },
-    validatePassword(password) {
-      const isLengthValid = password.length >= 8 && password.length < 15;
-      const hasUppercase = /[A-Z]/.test(password);
-      const hasTwoLowercase = /[a-z].*[a-z]/.test(password);
-      const hasNumericValue = /\d/.test(password);
-      const startsWithUppercase = /^[A-Z]/.test(password);
-      const hasUnderscore = /_/.test(password);
 
-      const isValid =
-          isLengthValid &&
-          hasUppercase &&
-          hasTwoLowercase &&
-          hasNumericValue &&
-          startsWithUppercase &&
-          hasUnderscore;
-      return isValid;
-
-    },
+    // validatePassword(password) {
+    //   const isLengthValid = password.length >= 8 && password.length < 15;
+    //   const hasUppercase = /[A-Z]/.test(password);
+    //   const hasTwoLowercase = /[a-z].*[a-z]/.test(password);
+    //   const hasNumericValue = /\d/.test(password);
+    //   const startsWithUppercase = /^[A-Z]/.test(password);
+    //   const hasUnderscore = /_/.test(password);
+    //
+    //   const isValid =
+    //       isLengthValid &&
+    //       hasUppercase &&
+    //       hasTwoLowercase &&
+    //       hasNumericValue &&
+    //       startsWithUppercase &&
+    //       hasUnderscore;
+    //   return isValid;
+    //
+    // },
   },
 };
 </script>
@@ -93,7 +103,7 @@ body {
   background-color: #f2f2f2;
 }
 
-section{
+section {
   position: relative;
   height: 500px;
 }
@@ -118,6 +128,24 @@ section{
 #head1 {
   margin-top: auto;
   letter-spacing: 2px;
+}
+
+.buttons{
+  display: flex;
+  width: 100%;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.signup{
+  cursor: pointer;
+  width: 20%;
+  height: 100%;
+  border-radius: 10px;
+  border: none;
+  background-color: deepskyblue;
 }
 
 .input-group {

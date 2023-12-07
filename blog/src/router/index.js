@@ -1,20 +1,38 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import SignupView from '../views/SignUpView'
+import LoginView from '../views/LoginView'
+import AddPost from '../views/AddPostView'
+import auth from "../auth";
 
-const routes = [
+const routes = [{
+  path: "/",
+  name: "home",
+  component: HomeView,
+  beforeEnter: async(to, from, next) => {
+    let authResult = await auth.authenticated();
+    if (!authResult) {
+      next('/login')
+    } else {
+      next();
+    }
+  }
+},
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/signup",
+    name: "SignUp",
+    component: SignupView,
   },
   {
-    path: '/signup',
-    name: 'signup',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/SignUpView.vue')
-  }
+    path: "/login",
+    name: "LogIn",
+    component: LoginView,
+  },
+  {
+    path: "/add-post",
+    name: "AddPost",
+    component: AddPost,
+  },
 ]
 
 const router = createRouter({

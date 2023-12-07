@@ -2,20 +2,10 @@
   <section class="post">
     <div class="post-wrapper">
       <div class="post-data">
-        <img class="author-img" :src="post.profileImage" alt="">
-        <p class="creation-date">{{ post.created }}</p>
-      </div>
-      <div v-if="post.postImage">
-        <img class="post-img" :src="post.postImage" alt="">
+        <p class="creation-date">{{ date }}</p>
       </div>
       <div class="post-content">
-        <p>{{ post.postContent }}</p>
-      </div>
-      <div class="likes">
-        <button class="add-like" @click="incrementLikes">
-          <img class="likes-icon" :src="post.likeIcon" alt="">
-        </button>
-        <span>{{ post.likes }} likes</span>
+        <p>{{ post.body }}</p>
       </div>
     </div>
   </section>
@@ -23,33 +13,27 @@
 
 <script>
 export default {
+  data() {
+    return {
+      date: this.post.date,
+    };
+  },
+
   props: {
     post: {
       type: Object,
       required: true,
     },
-    index: {
-      type: Number,
-      required: true,
-    },
   },
 
-  methods: {
-    incrementLikes() {
-      this.$store.dispatch('incrementLikesAct', this.index);
-    },
-  },
 }
 </script>
 
 
 
+
 <style scoped>
 
-.likes{
-  display: flex;
-  justify-content: space-between;
-}
 
 *{
   box-sizing: border-box;
@@ -74,20 +58,7 @@ div > p {
 }
 
 
-.author-img{
-  max-width: 30px;
-  max-height: 30px;
-}
 
-.author-img + p{
-  font-size: 16px;
-}
-
-.add-like{
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
 
 .post{
   margin-top: 30px;
@@ -106,21 +77,10 @@ div > p {
   gap: 7px;
 }
 
-.post-img{
-  width: 100%;
-  max-height: 400px;
-}
-
-
-
-.likes-icon{
-  max-width: 30px;
-  max-height: 30px;
-}
 
 .post-data{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 }
 

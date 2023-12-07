@@ -1,10 +1,16 @@
 <template>
-  <div v-for="(post, index) in getPosts" :key="post.id">
-    <Post :post="post" :index="index"/>
+  <div class="wrapper">
+    <button  @click="Logout" class="logout">Logout</button>
+    <div v-for="(post) in getPosts">
+      <Post :post="post"/>
+    </div>
+    <div class="post-buttons">
+      <button class="post-btn" @click="openAddPost">Add post</button>
+      <button class="post-btn">Delete all</button>
+
+    </div>
   </div>
-  <div class="reset-likes">
-    <button class="reset-likes-btn" @click="$store.dispatch('resetLikesAct')">Reset likes</button>
-  </div>
+
 
 </template>
 
@@ -17,11 +23,42 @@ export default {
     Post,
   },
 
+  methods: {
+    Logout() {
+      fetch("http://localhost:3000/auth/logout", {
+        credentials: 'include', //  Don't forget to specify this if you need cookies
+      })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            console.log('jwt removed');
+            //console.log('jwt removed:' + auth.authenticated());
+            this.$router.push("/login");
+            //location.assign("/");
+          })
+          .catch((e) => {
+            console.log(e);
+            console.log("error logout");
+          });
+    },
+
+    openAddPost(){
+      this.$router.push("/add-post");
+    }
+  },
+
   computed: {
     getPosts() {
+      // console.log(this.$store.getters.getPosts)
       return this.$store.getters.getPosts;
     },
   },
+
+  mounted() {
+    this.$store.dispatch('getAllPostsAct');
+
+  }
+
 };
 </script>
 
@@ -31,6 +68,16 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.logout{
+  width: 70px;
+  height: 40px;
+  margin: 23px auto 0;
+  background-color: deepskyblue;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 html{
@@ -44,13 +91,20 @@ body {
     background-color: #f2f2f2;
 }
 
-.reset-likes{
-  margin-top: 30px;
+.wrapper{
+  width: 100%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
 }
 
-.reset-likes-btn{
+.post-buttons{
+  display: flex;
+  justify-content: space-between;
+  width: 650px;
+  margin: 30px auto 0;
+}
+
+.post-btn{
   cursor: pointer;
   border-radius: 20px;
   border: none;

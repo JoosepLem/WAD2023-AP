@@ -164,7 +164,7 @@ app.get('/post/get-all', async (req, res) => {
 
 app.delete('/post/delete-all', async (req, res) => {
     try {
-      const deleteposts = await pool.query("DELETE * FROM posts");
+      const deleteposts = await pool.query("DELETE FROM posts");
   
       res.json(deleteposts)
     } catch (error) {

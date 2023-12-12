@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import SignupView from '../views/SignUpView'
 import LoginView from '../views/LoginView'
 import AddPost from '../views/AddPostView'
+import ContactsPage from '../views/ContactsPage.vue'
 import auth from "../auth";
 
 const routes = [{
@@ -32,6 +33,11 @@ const routes = [{
     path: "/add-post",
     name: "AddPost",
     component: AddPost,
+  },
+  {
+    path: "/contacts",
+    name: "ContactsPage",
+    component: ContactsPage,
   },
 ]
 

@@ -6,8 +6,7 @@
     </div>
     <div class="post-buttons">
       <button class="post-btn" @click="openAddPost">Add post</button>
-      <button class="post-btn">Delete all</button>
-
+      <button class="post-btn" @click="deleteAllPosts">Delete all</button>
     </div>
   </div>
 
@@ -44,8 +43,26 @@ export default {
 
     openAddPost(){
       this.$router.push("/add-post");
-    }
+    },
+
+    deleteAllPosts() {
+      // Send a request to delete all posts
+      fetch("http://localhost:3000/posts/delete-all", {
+        method: "DELETE",
+        credentials: 'include',
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          // Fetch the updated list of posts after deletion
+          this.$store.dispatch('getAllPostsAct');
+        })
+        .catch((error) => {
+          console.error("Error deleting posts:", error);
+        });
+    },
   },
+  
 
   computed: {
     getPosts() {

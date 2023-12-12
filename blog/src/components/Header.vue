@@ -5,8 +5,9 @@
                 <li>
                   <router-link to="/">Home</router-link>
                 </li>
+                <li> | </li>
                 <li>
-                  <router-link to="/signup">Sign up</router-link>
+                  <router-link to="/contacts">Contacts</router-link>
                 </li>
             </ul>
 <!--            <div class="img">-->
@@ -97,6 +98,11 @@
         transition: .5s;
         padding: 4px;
         border-radius: 5px;
+    }
+
+    li {
+        font-size: 30px;
+        color: white;
     }
 
     li a:hover{

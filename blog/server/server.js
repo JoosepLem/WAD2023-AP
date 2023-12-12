@@ -150,6 +150,43 @@ app.post('/post/add-post', async(req, res) => {
     }
 })
 
+app.get('/post/get/:id', async (req, res) => {
+    const postId = parseInt(req.params.id);
+
+  try {
+    const result = await pool.query('SELECT * FROM posts WHERE id = $1', [postId]);
+
+    if (result.rows.length > 0) {
+      const post = result.rows[0];
+      res.json(post);
+    } else {
+      res.status(404).json({ error: 'Post not found' });
+    }
+  } catch (error) {
+    console.error('Error fetching post:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+})
+
+app.put('/post/update/:id', async (req, res) => {
+    const postId = parseInt(req.params.id);
+    const updatedBody = req.body.body;
+  
+    try {
+      const result = await pool.query('UPDATE posts SET body = $1 WHERE id = $2 RETURNING *', [updatedBody, postId]);
+  
+      if (result.rows.length > 0) {
+        const updatedPost = result.rows[0];
+        res.json(updatedPost);
+      } else {
+        res.status(404).json({ error: 'Post not found' });
+      }
+    } catch (error) {
+      console.error('Error updating post:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+})
+
 
 app.get('/post/get-all', async (req, res) => {
     try {

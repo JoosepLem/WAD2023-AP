@@ -1,6 +1,6 @@
 <template>
   <section class="post">
-    <div class="post-wrapper">
+    <div class="post-wrapper"  @click="showPost(post.id)">
       <div class="post-data">
         <p class="creation-date">{{ date }}</p>
       </div>
@@ -10,6 +10,8 @@
     </div>
   </section>
 </template>
+
+
 
 <script>
 export default {
@@ -26,15 +28,19 @@ export default {
     },
   },
 
+  methods: {
+    showPost(postId) {
+      //navigate to the route 'individual-post' and pass the postId as the id parameter.
+      this.$router.push({ name: 'individual-post', params: { id: postId } });
+    },
+  },
+
 }
 </script>
 
 
 
-
 <style scoped>
-
-
 *{
   box-sizing: border-box;
   margin: 0;
@@ -84,6 +90,9 @@ div > p {
   align-items: center;
 }
 
+.post-wrapper:hover{
+  background-color: beige;
+}
 
 
 

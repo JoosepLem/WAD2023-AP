@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <button  @click="Logout" class="logout">Logout</button>
-    <div v-for="(post) in getPosts" @click="showPost(post.id)">
+    <div v-for="(post) in getPosts">
       <Post :post="post"/>
     </div>
     <div class="post-buttons">
@@ -44,12 +44,6 @@ export default {
     openAddPost(){
       this.$router.push("/add-post");
     },
-
-    showPost(postId) {
-      //navigate to the route 'individual-post' and pass the postId as the id parameter.
-      this.$router.push({ name: 'individual-post', params: { id: postId } });
-    },
-    
 
     deleteAllPosts() {
       // Send a request to delete all posts
@@ -111,7 +105,6 @@ html{
 body {
     margin: 0 0 100px;
     font-family: 'Times New Roman', Times, serif, monospace;
-    background-color: #f2f2f2;
 }
 
 .wrapper{

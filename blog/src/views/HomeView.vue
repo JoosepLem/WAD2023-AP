@@ -51,13 +51,13 @@ export default {
         method: "DELETE",
         credentials: 'include',
       })
-        .then((response) => response.json())
-        .then((data) => {
+          .then((response) => response.json())
+          .then((data) => {
           console.log(data);
           // Fetch the updated list of posts after deletion
           this.$store.dispatch('getAllPostsAct');
         })
-        .catch((error) => {
+          .catch((error) => {
           console.error("Error deleting posts:", error);
         });
     },

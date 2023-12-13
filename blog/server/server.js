@@ -66,6 +66,9 @@ app.post('/auth/signup', async(req, res) => {
         //console.log(req.body);
         const { email, password } = req.body;
 
+        const user = await pool.query("SELECT * FROM users WHERE email = $1", [email]);
+        if (user.rows.length !== 0) return res.status(401).json({ error: "User is already registered" });
+
         const salt = await bcrypt.genSalt(); //  generates the salt, i.e., a random string
         const bcryptPassword = await bcrypt.hash(password, salt) // hash the password and the salt
         const authUser = await pool.query( // insert the user and the hashed password into the database
@@ -199,6 +202,7 @@ app.get('/post/get-all', async (req, res) => {
 app.delete('/post/delete-all', async (req, res) => {
     try {
       const deleteposts = await pool.query("DELETE FROM posts");
+  
       res.json(deleteposts)
     } catch (error) {
         res.status(401).json({ error: error.message });

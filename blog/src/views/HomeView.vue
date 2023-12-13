@@ -47,7 +47,7 @@ export default {
 
     deleteAllPosts() {
       // Send a request to delete all posts
-      fetch("http://localhost:3000/posts/delete-all", {
+      fetch("http://localhost:3000/post/delete-all", {
         method: "DELETE",
         credentials: 'include',
       })
@@ -87,14 +87,15 @@ export default {
     padding: 0;
 }
 
-.logout{
+.logout {
   width: 70px;
   height: 40px;
   margin: 23px auto 0;
   background-color: deepskyblue;
-  border-radius: 10px;
-  border: none;
+  border-radius: 15px;
   cursor: pointer;
+  text-align: center;
+  color: black;
 }
 
 html{

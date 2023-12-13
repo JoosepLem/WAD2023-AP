@@ -86,7 +86,7 @@ export default {
 }
 
 
-button {
+.post-actions button {
   padding: 12px 20px;
   margin-right: 10px;
   cursor: pointer;

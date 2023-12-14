@@ -55,11 +55,27 @@ export default createStore({
       try {
         fetch(`http://localhost:3000/post/get-all`)
             .then((response) => response.json())
-            .then((data) => commit('setPosts', data)); // Correctly pass a function to .then
+            .then((data) => commit('setPosts', data));
       } catch (err) {
         console.error(err.message);
       }
     },
+
+    deleteAllPostsAct({ dispatch }) {
+      fetch("http://localhost:3000/post/delete-all", {
+        method: "DELETE",
+        credentials: 'include',
+      })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data);
+            dispatch('getAllPostsAct');
+          })
+          .catch(error => {
+            console.error("Error deleting posts:", error);
+          });
+    },
+
 
   },
 

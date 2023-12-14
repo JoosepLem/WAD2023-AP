@@ -28,7 +28,6 @@ export default {
   methods: {
     addPost() {
       this.$store.dispatch('addPostAct', { data: this.body });
-      // Navigate to the root page
       this.$router.push('/');
     }
   }

@@ -46,20 +46,7 @@ export default {
     },
 
     deleteAllPosts() {
-      // Send a request to delete all posts
-      fetch("http://localhost:3000/post/delete-all", {
-        method: "DELETE",
-        credentials: 'include',
-      })
-          .then((response) => response.json())
-          .then((data) => {
-          console.log(data);
-          // Fetch the updated list of posts after deletion
-          this.$store.dispatch('getAllPostsAct');
-        })
-          .catch((error) => {
-          console.error("Error deleting posts:", error);
-        });
+      this.$store.dispatch('deleteAllPostsAct');
     },
   },
   
@@ -96,6 +83,7 @@ export default {
   cursor: pointer;
   text-align: center;
   color: black;
+  border: none;
 }
 
 html{

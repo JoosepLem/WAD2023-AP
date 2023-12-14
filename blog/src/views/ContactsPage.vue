@@ -19,7 +19,6 @@
           { id: 1, name: 'Nikita Filin', email: 'nikitafilin@gmail.com' },
           { id: 2, name: 'Johann Mattias Tamm', email: 'johannmattiastamm@gmail.com' },
           { id: 3, name: 'Joosep Lember', email: 'lemberjoosep01@gmail.com'}
-          // Add more contacts as needed
         ],
       };
     },
@@ -35,8 +34,11 @@
   }
   
   .contacts-list {
+    display: flex;
+    flex-direction: column;
     list-style-type: none;
     padding: 0;
+    align-items: center;
   }
   
   .contact-item {
@@ -46,6 +48,7 @@
     margin: 10px 0;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 40%;
   }
   
   h1 {

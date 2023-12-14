@@ -66,6 +66,12 @@ export default {
   border-radius: 10px;
   border: none;
   background-color: deepskyblue;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.login:hover, .signup:hover{
+  opacity: 0.7;
 }
 
 .validation-error {

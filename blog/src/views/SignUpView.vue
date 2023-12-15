@@ -5,12 +5,14 @@
         <label for="email">Email</label>
         <input id="email" type="email" name="email" required v-model="email">
       </div>
+
       <div class="input-group">
         <label for="password">Password</label>
         <input id="password" type="password" name="password" required v-model="password">
       </div>
 
 
+      <div v-if="signupError" class="signup-error">{{ signupError }}</div>
       <div v-if="!isPasswordValid" class="validation-error">
         Password is not valid. Please follow these conditions:
         <ul>
@@ -38,24 +40,31 @@ export default {
       password: "",
       isEmailValid: true,
       isPasswordValid: true,
+      signupError: null,
     };
   },
   methods: {
     SignUp() {
       this.isPasswordValid = this.validatePassword(this.password);
-      if (this.isPasswordValid){
-        var data1 = {email: this.email, password: this.password};
+      if (this.isPasswordValid) {
+        var data1 = { email: this.email, password: this.password };
         fetch("http://localhost:3000/auth/signup", {
           method: "POST",
-          headers: {"Content-Type": "application/json"},
-          credentials: 'include', // Don't forget to specify this if you need cookies
+          headers: { "Content-Type": "application/json" },
+          credentials: 'include',
           body: JSON.stringify(data1)
         })
-            .then((response) => response.json())
+            .then((response) => {
+              if (response.status === 401) {
+                throw new Error('User already exists');
+              }
+              return response.json();
+            })
             .then(() => {
               location.assign("/");
             })
             .catch((e) => {
+              this.signupError = e.message; // Set the error message
               console.log(e);
             });
       }
@@ -87,6 +96,13 @@ export default {
 
 
 <style scoped>
+
+.signup-error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
 
 .validation-error {
   color: red;

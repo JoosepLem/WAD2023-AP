@@ -19,17 +19,15 @@ export default {
     };
   },
   mounted() {
-    // Fetch the data for the individual post using the route parameter
     const postId = this.$route.params.id;
     this.fetchPost(postId);
   },
   methods: {
     fetchPost(postId) {
-      // Fetch the data for the individual post
       fetch(`http://localhost:3000/post/get/${postId}`)
         .then((response) => response.json())
         .then((data) => {
-          this.post = data; // Directly assign the response data
+          this.post = data;
         })
         .catch((error) => {
           console.error("Error fetching individual post:", error);
@@ -37,12 +35,10 @@ export default {
     },
 
     updatePost() {
-      // Get the updated body directly from the textarea
       const updatedBody = document.querySelector(".post-body textarea").value;
 
-      // Send a request to update the post's body on the server
       fetch(`http://localhost:3000/post/update/${this.post.id}`, {
-        method: "PUT", // Assuming you're using a PUT request for updates
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
@@ -54,7 +50,6 @@ export default {
         .then((data) => {
           console.log("Post updated:", data);
 
-          // After updating, navigate back to the home page
           this.$router.push("/");
         })
         .catch((error) => {
@@ -65,7 +60,6 @@ export default {
     deletePost() {
       const postId = this.post.id;
 
-      // Send a request to delete the post on the server
       fetch(`http://localhost:3000/post/delete/${postId}`, {
         method: "DELETE",
         headers: {
@@ -129,7 +123,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 8px;
   font-size: 14px;
-  resize: vertical; /* Allow vertical resizing */
+  resize: vertical;
 }
 </style>
   

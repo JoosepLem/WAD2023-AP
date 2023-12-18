@@ -68,7 +68,6 @@ export default createStore({
       })
           .then(response => response.json())
           .then(data => {
-            console.log(data);
             dispatch('getAllPostsAct');
           })
           .catch(error => {

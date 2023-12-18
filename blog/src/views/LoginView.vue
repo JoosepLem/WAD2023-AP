@@ -14,6 +14,8 @@
         <span>or</span>
         <button class="signup" @click='this.$router.push("/signup")'>Sign up</button>
       </div>
+      <div v-if="loginError" class="signup-error">{{ loginError }}</div>
+
 
 
     </div>
@@ -27,6 +29,7 @@ export default {
     return {
       email: "",
       password: "",
+      loginError: null,
     };
   },
   methods:{
@@ -35,13 +38,20 @@ export default {
       fetch("http://localhost:3000/auth/login", {
         method: "POST",
         headers: {"Content-Type": "application/json",},
-        credentials: 'include', // Don't forget to specify this if you need cookies
+        credentials: 'include',
         body: JSON.stringify(data)})
-          .then((response) => response.json())
+          .then((response) => {
+            if (response.status === 401) {
+              throw new Error('Incorrect login or password');
+            }
+            return response.json();
+          })
           .then(() => {
-            location.assign("/");})
+            location.assign("/")})
           .catch((e) => {
-            console.log("error");});
+            this.loginError = e.message;
+
+         });
     },
   },
 };
@@ -57,6 +67,12 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 30px;
+}
+
+.signup-error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
 }
 
 .login, .signup{
@@ -101,7 +117,6 @@ section{
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   width: 40%;
-  /*max-width: 400px;*/
   padding: 20px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -193,7 +208,7 @@ input[type="submit"]:hover {
 }
 
 .create-account ~ * {
-  text-shadow: 0.5px 0.5px 0.5px gray;
+  text-shadow: 0.5px 0.5px 0.5px rgb(128, 128, 128);
 }
 
 

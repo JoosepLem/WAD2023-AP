@@ -64,7 +64,7 @@ export default {
               location.assign("/");
             })
             .catch((e) => {
-              this.signupError = e.message; // Set the error message
+              this.signupError = e.message;
               console.log(e);
             });
       }

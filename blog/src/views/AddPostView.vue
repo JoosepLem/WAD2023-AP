@@ -11,7 +11,6 @@
       </div>
 
       <div class="button-wrapper">
-        <!-- Use router-link for navigation -->
         <router-link to="/" class="add-post-button" @click="addPost">Add</router-link>
       </div>
     </div>
@@ -39,7 +38,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100dvh; /* Full viewport height */
+  height: 100dvh;
 }
 
 .add-post-wrapper {
@@ -48,10 +47,10 @@ export default {
   justify-content: center;
   gap: 40px;
   width: 40%;
-  padding: 20px; /* Add padding for spacing inside the container */
+  padding: 20px;
   background-color: white;
   border-radius: 10px;
-  border: 1px solid #ccc; /* Add border */
+  border: 1px solid #ccc;
 }
 
 .heading {
@@ -60,7 +59,7 @@ export default {
 }
 
 #post-body {
-  width: 100%; /* Use 100% width to expand within its container */
+  width: 100%;
   min-height: 100px;
   border-radius: 10px;
   border: none;
@@ -68,7 +67,7 @@ export default {
   font-size: 17px;
   background-color: #f2f2f2;
   resize: vertical;
-  flex-grow: 1; /* Allow textarea to grow and shrink */
+  flex-grow: 1;
 }
 
 .form {

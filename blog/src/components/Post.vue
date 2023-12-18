@@ -30,7 +30,6 @@ export default {
 
   methods: {
     showPost(postId) {
-      //navigate to the route 'individual-post' and pass the postId as the id parameter.
       this.$router.push({ name: 'individual-post', params: { id: postId } });
     },
   },
